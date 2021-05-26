@@ -1,0 +1,21 @@
+.layout{
+  .layout-components{
+    height: 100vh;
+    border: 1px red solid;
+    box-sizing: border-box;
+    overflow-y: auto;
+    .components{
+      .basic{
+        padding:10px 10px;
+        &>h5{
+          padding:0 5px;
+        }
+        &>ul>li{
+            list-style-type:none;
+            padding: 5px;
+            float: left;
+        }
+      }
+    }
+  }
+}

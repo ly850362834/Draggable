@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="layout">
     <el-row>
       <el-col :span="6">
-        <div>
+        <div class="layout-components">
             <components></components>
         </div>
       </el-col>
