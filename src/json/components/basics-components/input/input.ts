@@ -1,7 +1,8 @@
-import {BasicsComponent} from '../index';
+import { BasicsComponent } from '../basicsComponent';
+
 class Input extends BasicsComponent{
     constructor(name: string) {
-        super(name);
+        super(name)
     }
 }
 const input = new Input('input');

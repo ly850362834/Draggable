@@ -14,7 +14,12 @@ import { basicsComponent } from "@/json/components/basics-components/index.ts"
 })
 export default class Components extends Vue {
   created(){
-    console.log(basicsComponent)
+    // class Input extends BasicsComponent{
+    //   constructor(name: string) {
+    //     super(name)
+    //   }
+    // }
+    console.log(basicsComponent.basicsComponentJson)
   }
 }
 </script>
