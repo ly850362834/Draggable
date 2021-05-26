@@ -35,7 +35,7 @@ export default defineComponent({
       const that = this;
       var g1: HTMLElement = document.getElementById(this.id) as HTMLElement;
       var opts: object = {
-        animation: 300,
+        animation: 0,
         draggable: ".item",
         group: this.group,
         //拖动结束
@@ -45,8 +45,10 @@ export default defineComponent({
           that.$emit('onEnd')
         },
         // 元素从一个列表拖拽到另一个列表
-        onAdd: function (evt: any) {
-          that.$emit('onAdd')
+        onAdd: function (evt: any,e: any) {
+          const type = evt.item.attributes.type.value;
+          console.log(evt.item.attributes.type.value)
+          that.$emit('onAdd',evt,type)
         },
         // 列表内元素顺序更新的时候触发
         onUpdate: function (evt: any) {
