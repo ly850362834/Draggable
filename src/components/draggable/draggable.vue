@@ -55,8 +55,10 @@ export default defineComponent({
         },
         // 元素从一个列表拖拽到另一个列表
         onAdd: function (evt: any,e: any) {
+          // console.log(evt)
           // 获取当前组件的类别
-          const type = evt.item.attributes.type.value;
+          // const type = evt.item.attributes.type.value;
+          const type = null;
           // 判断拖拽组件是发送端还是接收端
           if (that.group.put) {
              let draggable = document.getElementById(that.id);
@@ -79,7 +81,8 @@ export default defineComponent({
         },
         // 列表内元素顺序更新的时候触发
         onUpdate: function (evt: any) {
-          that.$emit('onUpdate',evt)
+          console.log(evt)
+          that.$emit('onUpdate',evt);
         },
         // 开始拖拽的时候
         onStart: function (evt: any) {
@@ -87,7 +90,8 @@ export default defineComponent({
         },
         // 列表的任何更改都会触发
         onSort: function (evt:any) {
-          console.log(sortable.toArray(),that.list)
+          // console.log(evt)
+          // console.log(sortable.toArray(),that.list)
           // console.log(that.list,666)
         },
         // clone一个元素的时候触发
@@ -96,7 +100,7 @@ export default defineComponent({
         },
         // 拖拽元素改变位置的时候
         onChange: function(evt: any) {
-          console.log(that.list)
+          // console.log(that.list)
           that.$emit('onChange',evt)
         }
       }
