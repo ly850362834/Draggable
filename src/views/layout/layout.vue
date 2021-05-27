@@ -3,7 +3,7 @@
     <el-row>
       <el-col :span="6">
         <div class="layout-components">
-            <com></com>
+            <element></element>
         </div>
       </el-col>
       <el-col :span="12">
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import com from "@/views/layout/element/element.vue";
+import element from "@/views/layout/element/element.vue";
 import renders from "@/views/layout/renders/renders.vue";
 import {defineComponent, PropType} from 'vue';
 export default defineComponent({
@@ -31,15 +31,15 @@ export default defineComponent({
     }
   },
   components:{
-    com,
+    element,
     renders
   },
   methods: {
     onEnd(){
-      console.log('这是拖动结束')
+      // console.log('这是拖动结束')
     },
     onAdd(evt:any,type:any){
-      console.log(type)
+      // console.log(type)
     }
   },
   mounted(){

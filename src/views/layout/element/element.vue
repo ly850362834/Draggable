@@ -3,7 +3,7 @@
     <div class="basic">
       <h5>基础组件</h5>
       <ul>
-        <draggable :id = "'g1'" :onAdd="onAdd">
+        <draggable :id = "'g1'" :onEnd="onEnd">
           <template  v-slot:content>
             <li class="item" data-id="1" type="inputs">input</li>
           </template>
@@ -30,8 +30,8 @@ export default defineComponent({
 
   },
   methods: {
-    onEnd(){
-      console.log('这是拖动结束')
+    onEnd(evt: any){
+      // console.log('这是拖动结束',evt)
     },
     onAdd(evt:any,type:any){
       console.log(type)
