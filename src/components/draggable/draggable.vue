@@ -42,15 +42,22 @@ export default defineComponent({
     }
   },
   methods: {
+    //深复制对象|数组
+    deepCopy(item: object | Array<any>){
+      return JSON.parse(JSON.stringify(item));
+    },
+    // 获取组件内的绑定对象值
     getItemValue(evt: any){
       return JSON.parse(evt.item.attributes.comobj.value);
     },
+    // 重新渲染当前视图更新
     viewUpdate(){
       this.views=false;
       this.$nextTick(()=>{
         this.views=true;
       })
     },
+    // 删除新成的Dom元素
     deleteNewDom(evt: any){
       evt.item.parentNode.removeChild(evt.item)
     },
@@ -78,6 +85,7 @@ export default defineComponent({
         onMove: function (evt:any,originalEvent:any){
           // console.log(evt)
           // console.log(evt,originalEvent)
+          that.$emit('onMove')
         },
         onRemove:function (evt: any){
           that.list.splice(evt.oldIndex,1);
@@ -92,7 +100,7 @@ export default defineComponent({
           try {
             obj=that.getItemValue(evt);
           } catch (err) {
-            console.log(err)
+            console.log('组件没有绑定对象信息上面')
           }
           that.list.splice(evt.newIndex,0,obj);
           that.deleteNewDom(evt);
@@ -124,30 +132,13 @@ export default defineComponent({
         },
         // 列表内元素顺序更新的时候触发
         onUpdate: function (evt: any) {
-          // console.log(evt,'这是排序更新');
-          // let obj=JSON.parse(evt.item.attributes.comobj.value);
-          // let newIndexObj = JSON.parse(JSON.stringify(that.list[evt.newIndex]));
-          // that.list.splice(evt.newIndex,1,obj);
-          // that.list.splice(evt.oldIndex,1,newIndexObj);
-          // console.log(evt,'这是排序更新',that.list);
-          [that.list[evt.oldIndex],that.list[evt.newIndex]]=[that.list[evt.newIndex],that.list[evt.oldIndex]];
+          let oldIndex = evt.oldIndex;
+          let newIndex = evt.newIndex;
+          let oldItem = that.deepCopy(that.list[oldIndex] as object | Array<any>);
+          that.list.splice(oldIndex,1);
+          that.list.splice(newIndex,0,oldItem);
           that.deleteNewDom(evt);
           that.viewUpdate();
-          // that.$forceUpdate();
-          // console.log(evt);
-          // let list = JSON.parse(JSON.stringify((that.list)));
-          // // [list[evt.oldIndex],list[evt.newIndex]]=[list[evt.newIndex],list[evt.oldIndex]];
-          // // that.list. list;
-          // that.list.splice(0,list.length);
-          // console.log(that.list,list);
-          // debugger
-          // list.forEach((item: object)=>{
-          //   that.list.push(item)
-          // });
-          // console.log(that.list,'这是列表元素排序触发')
-          // that.list=that.list.concat(list);
-          // [that.list[evt.oldIndex],that.list[evt.newIndex]]=[that.list[evt.newIndex],that.list[evt.oldIndex]];
-          // console.log(that.list,'这是列表元素排序触发')
           that.$emit('onUpdate',evt);
         },
         // 开始拖拽的时候
