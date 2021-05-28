@@ -6,15 +6,15 @@
         <template v-for="(item,index) in list">
           <div v-if="item.children" style="padding: 5px" class="item" :data-id="item.name">
             <!--                  222-->
-            <draggable :id="'g3'" :group="group3">
+            <draggable :id="'g3'" :group="group3" :list="item.children">
               <template v-slot:content>
-                <div v-for="(citem,index) in item.children" style="background: aqua" class="item" :data-id = "citem.name">
+                <div v-for="(citem,index) in item.children" style="background: aqua" class="item" :data-id = "citem.name" :comObj="JSON.stringify(citem)">
                   {{ citem.name }}
                 </div>
               </template>
             </draggable>
           </div>
-          <div class="item" style="background: blanchedalmond" v-else :data-id = "item.name">
+          <div class="item" style="background: blanchedalmond" v-else :data-id = "item.name" :comObj="JSON.stringify(item)">
             {{ item.name }}
           </div>
         </template>
@@ -39,7 +39,7 @@ export default defineComponent({
     return {
       group3: {name: "itxst.com", pull: true, put: true},
       group2: {name: "itxst.com", pull: true, put: true},
-      list: [{name: 1, children: [{name: '1-1'}, {name: '1-2'}, {name: '1-3'}]}, {name: 2}]
+      list: [{name: 1, children: [{name: '1-1'}, {name: '1-2'}, {name: '1-3'},{name: '1-4'}]}, {name: 2}]
     }
   },
 
