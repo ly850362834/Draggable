@@ -34,6 +34,11 @@ export default defineComponent({
     }
   },
   methods: {
+    // getArrDifference(arr1: Array<number | string>, arr2: Array<object>) {
+    //   return arr1.concat(arr2).filter(function (v, i, arr) {
+    //     return arr.indexOf(v) === arr.lastIndexOf(v);
+    //   });
+    // },
     registerDom(){
       // 设置指代this
       const that = this;
@@ -90,8 +95,13 @@ export default defineComponent({
         },
         // 列表的任何更改都会触发
         onSort: function (evt:any) {
-          // console.log(evt)
-          // console.log(sortable.toArray(),that.list)
+          console.log(sortable.toArray(),that.list,evt);
+          // function getArrDifference(arr1: array, arr2) {
+          //   return arr1.concat(arr2).filter(function(v, i, arr) {
+          //     return arr.indexOf(v) === arr.lastIndexOf(v);
+          //   });
+          // }
+          // console.log(getArrDifference(arr1,arr2));
           // console.log(that.list,666)
         },
         // clone一个元素的时候触发
