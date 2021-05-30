@@ -3,11 +3,11 @@
     <el-row>
       <el-col :span="6">
         <div class="layout-components">
-            <element></element>
+          <elements></elements>
         </div>
       </el-col>
       <el-col :span="12">
-        <renders></renders>
+        <renders class="layout-renders"></renders>
       </el-col>
       <el-col :span="6">
         <div>333</div>
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import element from "@/views/layout/element/element.vue";
+import elements from "@/views/layout/elements/elements.vue";
 import renders from "@/views/layout/renders/renders.vue";
 import {defineComponent, PropType} from 'vue';
 export default defineComponent({
@@ -31,7 +31,7 @@ export default defineComponent({
     }
   },
   components:{
-    element,
+    elements,
     renders
   },
   methods: {

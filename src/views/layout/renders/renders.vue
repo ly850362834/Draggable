@@ -1,36 +1,17 @@
 <template>
-  <div>
-    <draggable :id="'g2'" :onEnd="onEnd" :group="group2" style="height: 300px;background: red" :onAdd="onAdd"
-               :list="list">
-      <template v-slot:content>
-        <template v-for="(item,index) in list">
-          <div v-if="item.children" style="padding: 5px" class="item" :data-id="item.name">
-            <!--                  222-->
-            <draggable :id="'g3'" :group="group3" :list="item.children">
-              <template v-slot:content>
-                <div v-for="(citem,index) in item.children" style="background: aqua" class="item" :data-id = "citem.name" :comObj="JSON.stringify(citem)">
-                  {{ citem.name }}
-                </div>
-              </template>
-            </draggable>
-          </div>
-          <div class="item" style="background: blanchedalmond" v-else :data-id = "item.name" :comObj="JSON.stringify(item)">
-            {{ item.name }}
-          </div>
-        </template>
-<!--        <div class="item" style="background: blanchedalmond">-->
-<!--          444-->
-<!--        </div>-->
-<!--        <div class="item" style="background: blanchedalmond">-->
-<!--          4555-->
-<!--        </div>-->
+  <draggable :id="'g2'" :onEnd="onEnd" :group="group2" :onAdd="onAdd"
+             :list="list">
+    <template v-slot:content>
+      <template v-for="(item,index) in list">
+        <renderEngine :list="list" :comInformation="item" class="draggable"></renderEngine>
       </template>
-    </draggable>
-  </div>
+    </template>
+  </draggable>
 </template>
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
+import renderEngine from '@/components/render-engine/index.vue'
 
 export default defineComponent({
   name: 'render',
@@ -39,18 +20,19 @@ export default defineComponent({
     return {
       group3: {name: "itxst.com", pull: true, put: true},
       group2: {name: "itxst.com", pull: true, put: true},
-      list: [{name: 1, children: [{name: '1-1'}, {name: '1-2'}, {name: '1-3'},{name: '1-4'}]}, {name: 2}]
+      list: []
     }
   },
-
-  components: {},
+  components: {
+    renderEngine
+  },
   methods: {
     onEnd() {
       // console.log('拖动结束')
       // console.log('这是拖动结束')
     },
     onAdd(evt: any, type: any) {
-      // console.log(evt);
+     console.log(this.list)
     }
   },
   mounted() {

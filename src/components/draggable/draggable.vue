@@ -11,7 +11,7 @@
 <script lang="ts">
 import Sortable from 'sortablejs';
 import {defineComponent, PropType} from 'vue';
-import fa from "element-plus/packages/locale/lang/fa";
+// import fa from "element-plus/packages/locale/lang/fa";
 
 export default defineComponent({
   name: 'draggable',
@@ -57,7 +57,7 @@ export default defineComponent({
         this.views=true;
       })
     },
-    // 删除新成的Dom元素
+    // 删除新成的Dom元素 （sort框架会超出vue范围内生成一个dom）
     deleteNewDom(evt: any){
       evt.item.parentNode.removeChild(evt.item)
     },
@@ -75,7 +75,7 @@ export default defineComponent({
       var g1: HTMLElement = document.getElementById(this.id) as HTMLElement;
       var opts: object = {
         animation: 0,
-        draggable: ".item",
+        draggable: ".draggable",
         group: this.group,
         fallbackOnBody:true,
         //拖动结束

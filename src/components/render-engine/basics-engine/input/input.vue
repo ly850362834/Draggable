@@ -1,12 +1,10 @@
 <template>
-  <div>
-
-  </div>
+  <el-input></el-input>
 </template>
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
 export default defineComponent({
-  name: 'components',
+  name: 'Input',
   props: {
 
   },

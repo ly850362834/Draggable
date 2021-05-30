@@ -1,11 +1,13 @@
 <template>
-  <div class="components">
+  <div class="element">
     <div class="basic">
-      <h5>基础组件</h5>
+      <h5>{{ basicsComponent.label }}</h5>
       <ul>
         <draggable :id = "'g1'" :onEnd="onEnd">
           <template  v-slot:content>
-            <li class="item" data-id="1" type="inputs">input</li>
+            <li class="draggable" v-for="(item,index) in basicsComponent.basicsComponentJson" :comObj="JSON.stringify(item)">
+              {{item.label}}
+            </li>
           </template>
         </draggable>
       </ul>
@@ -15,15 +17,18 @@
   </div>
 </template>
 <script lang="ts">
+import {basicsComponent} from "@/json/components/basics-components";
 import {defineComponent, PropType} from 'vue';
 export default defineComponent({
-  name: 'components',
+  name: 'element',
   props: {
 
   },
   data(){
     return {
+      basicsComponent:{
 
+      }
     }
   },
   components:{
@@ -35,10 +40,12 @@ export default defineComponent({
     },
     onAdd(evt:any,type:any){
       console.log(type)
-    }
+    },
+
   },
   mounted(){
-
+    this.basicsComponent = basicsComponent;
+    // console.log(basicsComponent);
   },
   setup() {
     return {};
