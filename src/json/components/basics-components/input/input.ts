@@ -1,6 +1,6 @@
-import { BasicsComponent } from '../basicsComponent';
+import { BasicAttribute } from '../basics';
 
-class Input extends BasicsComponent{
+class Input extends BasicAttribute{
     constructor(name: string,label: string) {
         super(name,label)
     }

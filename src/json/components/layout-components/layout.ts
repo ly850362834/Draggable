@@ -1,6 +1,5 @@
-class LayoutComponent {
-    readonly type='basics';
-    // readonly basicsComponentJson: Array<Object>=[];
+class Layout {
+    readonly type='layout';
     readonly name:string;
     readonly label:string;
     constructor(name:string,label:string) {
@@ -9,5 +8,5 @@ class LayoutComponent {
     }
 };
 export {
-    LayoutComponent,
+    Layout,
 }
