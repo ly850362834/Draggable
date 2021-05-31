@@ -1,29 +1,31 @@
-.layout{
-  .layout-renders{
+.layout {
+  .layout-renders {
     .setlayoutheight();
   }
-  .layout-components{
+
+  .layout-element {
     .setlayoutheight();
-    .element{
-      .basic{
-        padding:10px 10px;
-        &>h5{
-          padding:0 5px;
-          font-weight: bold;
-          font-size: 16px;
-        }
-        &>ul{
-          padding:10px 0;
-        }
-        &>ul li{
-            cursor: pointer;
-            padding: 8px;
-            float: left;
-            font-size: 12px;
-            background:#F3F6FB ;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
+    .element {
+      padding: 10px 10px;
+
+      & > h5 {
+        padding: 0 5px;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      & > ul {
+        padding: 10px 0;
+      }
+
+      & > ul li {
+        cursor: pointer;
+        padding: 8px;
+        float: left;
+        font-size: 12px;
+        background: #F3F6FB;
+        margin-right: 10px;
+        margin-bottom: 10px;
       }
     }
   }

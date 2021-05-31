@@ -2,9 +2,7 @@
   <div class="layout">
     <el-row>
       <el-col :span="6">
-        <div class="layout-components">
           <elements></elements>
-        </div>
       </el-col>
       <el-col :span="12">
         <renders class="layout-renders"></renders>

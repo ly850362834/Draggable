@@ -1,6 +1,4 @@
-import getPrototypeOf = Reflect.getPrototypeOf;
-
-class BasicsComponent {
+class LayoutComponent {
     readonly type='basics';
     // readonly basicsComponentJson: Array<Object>=[];
     readonly name:string;
@@ -10,10 +8,6 @@ class BasicsComponent {
         this.label = label;
     }
 };
-// interface BasicsComponent {
-//     basicsComponentJson: Array<object>
-// }
-// BasicsComponent.prototype.basicsComponentJson=[];
 export {
-    BasicsComponent,
+    LayoutComponent,
 }

@@ -1,12 +1,12 @@
 <template>
-  <div class="element">
-    <div class="basic">
+  <div class="layout-element">
+    <div class="element">
       <h5>{{ basicsComponent.label }}</h5>
       <ul>
-        <draggable :id = "'g1'" :onEnd="onEnd">
+        <draggable :id = "'g1'" :onEnd="onEnd" :onChoose="onChoose">
           <template  v-slot:content>
             <li class="draggable" v-for="(item,index) in basicsComponent.basicsComponentJson" :comObj="JSON.stringify(item)">
-              {{item.label}}
+              {{item.type}}
             </li>
           </template>
         </draggable>
@@ -19,6 +19,9 @@
 <script lang="ts">
 import {basicsComponent} from "@/json/components/basics-components";
 import {defineComponent, PropType} from 'vue';
+interface basicsComponent{
+  basicsComponentJson: readonly any[];
+}
 export default defineComponent({
   name: 'element',
   props: {
@@ -26,25 +29,32 @@ export default defineComponent({
   },
   data(){
     return {
-      basicsComponent:{
-
-      }
+      basicsComponent: {}
     }
   },
   components:{
 
   },
   methods: {
+    onChoose(evt: any) {
+      console.log(evt)
+    },
     onEnd(evt: any){
       // console.log('这是拖动结束',evt)
     },
-    onAdd(evt:any,type:any){
-      console.log(type)
+    onAdd(evt:any){
+      // console.log(type)
     },
 
   },
-  mounted(){
+  created() {
     this.basicsComponent = basicsComponent;
+    // interface basicsComponent{
+    //   basicsComponentJson: readonly any[];
+    // }
+    // (this.basicsComponent as basicsComponent).basicsComponentJson[0].type='aaa'
+  },
+  mounted(){
     // console.log(basicsComponent);
   },
   setup() {

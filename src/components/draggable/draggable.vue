@@ -78,6 +78,10 @@ export default defineComponent({
         draggable: ".draggable",
         group: this.group,
         fallbackOnBody:true,
+        // 元素被选中
+        onChoose: function (evt: any) {
+          that.$emit('onChoose',evt)
+        },
         //拖动结束
         onEnd: function (evt: any) {
           that.$emit('onEnd',evt)
@@ -94,7 +98,6 @@ export default defineComponent({
         },
         // 元素从一个列表拖拽到另一个列表
         onAdd: function (evt: any,e: any) {
-          // console.log(evt,'这是新增')
           // if (evt.pullMode!='clone') {
           let obj;
           try {
@@ -105,8 +108,9 @@ export default defineComponent({
           that.list.splice(evt.newIndex,0,obj);
           that.deleteNewDom(evt);
           that.viewUpdate();
-          const type = null;
-          that.$emit('onAdd',evt,type);
+          setTimeout(()=>{
+            that.$emit('onAdd',evt);
+          },0)
           // console.log(evt)
           // 获取当前组件的类别
           // const type = evt.item.attributes.type.value;

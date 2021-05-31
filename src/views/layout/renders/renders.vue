@@ -27,12 +27,24 @@ export default defineComponent({
     renderEngine
   },
   methods: {
-    onEnd() {
+    onEnd(): void {
       // console.log('拖动结束')
       // console.log('这是拖动结束')
     },
-    onAdd(evt: any, type: any) {
-     console.log(this.list)
+    onAdd(evt: any) {
+      // interface list {
+      //   type: string
+      // }
+      // console.log((this.list));
+      // debugger
+      // debugger
+      // setTimeout(()=>{
+      //   console.log((this.list[0] as any).type);
+      //   debugger
+      // },0)
+       // console.log(this.list,666);
+       // console.log(this.list[0])
+     //  debugger
     }
   },
   mounted() {

@@ -1,6 +1,6 @@
 <template>
   <div style="border:2px #3892FF solid;padding:2px">
-    <basicEngine v-if="comInformation.type='basic'"></basicEngine>
+    <basicEngine></basicEngine>
   </div>
 </template>
 <script lang="ts">
@@ -17,7 +17,7 @@ export default defineComponent({
     comInformation:{
       type: Object as PropType<comInformation>,
       default:{
-        type: '',
+        type: '' ,
         name: '',
         label: '',
       }
