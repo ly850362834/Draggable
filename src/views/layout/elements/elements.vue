@@ -50,7 +50,7 @@ export default defineComponent({
   },
   methods: {
     onChoose(evt: any) {
-      console.log(evt)
+      // console.log(evt)
     },
     onEnd(evt: any){
       // console.log('这是拖动结束',evt)

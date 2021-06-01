@@ -99,6 +99,7 @@ export default defineComponent({
           try {
             obj=that.getItemValue(evt);
           } catch (err) {
+            console.log(evt);
             console.log('组件没有绑定对象信息上面')
           }
           that.list.splice(evt.newIndex,0,obj);

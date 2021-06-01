@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="12">
-      <draggable id="g5" :group="group2" :list="comInformation.children[0].list" style="padding: 5px;border: 1px red dotted">
+      <draggable id="g5" :group="group2" :list="comInformation.children[0].list" class="render-col-border" @choose="choose">
         <template v-slot:content>
           <template v-for="(item,index) in comInformation.children[0].list">
             <renderEngine :comInformation="item" class="draggable"></renderEngine>
@@ -10,7 +10,7 @@
       </draggable>
     </el-col>
     <el-col :span="12">
-      <draggable id="g6" :group="group2" :list="comInformation.children[1].list">
+      <draggable id="g6" :group="group2" :list="comInformation.children[1].list" class="render-col-border">
         <template v-slot:content>
           <template v-for="(item,index) in comInformation.children[1].list">
             <renderEngine :comInformation="item" class="draggable"></renderEngine>
@@ -41,7 +41,11 @@ export default defineComponent({
     }
   },
   components: {},
-  methods: {},
+  methods: {
+    choose(evt: any){
+      console.log(evt)
+    }
+  },
   mounted() {
     console.log()
   },
