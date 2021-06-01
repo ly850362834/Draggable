@@ -3,7 +3,7 @@
     <div class="element">
       <h5>{{ basicsComponent.label }}</h5>
       <ul>
-        <draggable :id = "'basic'" :onEnd="onEnd" :onChoose="onChoose">
+        <draggable :onEnd="onEnd" :onChoose="onChoose">
           <template  v-slot:content>
             <li class="draggable" v-for="(item,index) in basicsComponent.basicsComponentJson" :comObj="JSON.stringify(item)">
               {{item.label}}
@@ -15,7 +15,7 @@
     <div class="element">
       <h5>{{ layoutComponent.label }}</h5>
       <ul>
-        <draggable :id = "'layout'" :onEnd="onEnd" :onChoose="onChoose">
+        <draggable :onEnd="onEnd" :onChoose="onChoose">
           <template  v-slot:content>
             <li class="draggable" v-for="(item,index) in layoutComponent.layoutComponentJson" :comObj="JSON.stringify(item)">
               {{item.label}}

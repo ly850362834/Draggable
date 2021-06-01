@@ -1,9 +1,9 @@
 <template>
-  <draggable :id="'g2'" :onEnd="onEnd" :group="group2" :onAdd="onAdd"
+  <draggable :onEnd="onEnd" :group="group2" @onAdd="onAdd"
              :list="list">
     <template v-slot:content>
       <template v-for="(item,index) in list">
-        <renderEngine :list="list" :comInformation="item" class="draggable"></renderEngine>
+        <renderEngine :comInformation="item" class="draggable"></renderEngine>
       </template>
     </template>
   </draggable>
@@ -11,7 +11,6 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
-import renderEngine from '@/components/render-engine/index.vue'
 
 export default defineComponent({
   name: 'render',
@@ -24,7 +23,7 @@ export default defineComponent({
     }
   },
   components: {
-    renderEngine
+
   },
   methods: {
     onEnd(): void {
@@ -32,9 +31,14 @@ export default defineComponent({
       // console.log('这是拖动结束')
     },
     onAdd(evt: any) {
+      console.log(this.list,666)
+      // console.log(this.list,666);
       // interface list {
       //   type: string
+      //   name: string
       // }
+      // console.log((this.list[0] as list).name);
+      // debugger
       // console.log((this.list));
       // debugger
       // debugger

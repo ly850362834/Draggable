@@ -1,5 +1,5 @@
 <template>
-  <div :id="id">
+  <div :id="renderId">
     <template v-if="views">
       <slot name="content">
 
@@ -17,7 +17,8 @@ export default defineComponent({
   name: 'draggable',
   data(){
     return {
-      views:true
+      views:true,
+      renderId:`${new Date().valueOf()}`,
     }
   },
   props: {
@@ -41,6 +42,9 @@ export default defineComponent({
       })
     }
   },
+  created() {
+    // this.renderId = new Date().valueOf();
+  },
   methods: {
     //深复制对象|数组
     deepCopy(item: object | Array<any>){
@@ -61,18 +65,10 @@ export default defineComponent({
     deleteNewDom(evt: any){
       evt.item.parentNode.removeChild(evt.item)
     },
-    // getArrDifference(arr1: Array<number | string>, arr2: Array<object>) {
-    //   for (let i = 0;i<arr1.length;i++) {
-    //
-    //   }
-    //   // return arr1.concat(arr2).filter(function (v, i, arr) {
-    //   //   return arr.indexOf(v) === arr.lastIndexOf(v);
-    //   // });
-    // },
     registerDom(){
       // 设置指代this
       const that = this;
-      var g1: HTMLElement = document.getElementById(this.id) as HTMLElement;
+      var g1: HTMLElement = document.getElementById(this.renderId) as HTMLElement;
       var opts: object = {
         animation: 0,
         draggable: ".draggable",
@@ -108,6 +104,7 @@ export default defineComponent({
           that.list.splice(evt.newIndex,0,obj);
           that.deleteNewDom(evt);
           that.viewUpdate();
+          //此处必须异步操作 放在最后层级
           setTimeout(()=>{
             that.$emit('onAdd',evt);
           },0)
