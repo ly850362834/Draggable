@@ -11,7 +11,9 @@
 <script lang="ts">
 import Sortable from 'sortablejs';
 import {defineComponent, PropType} from 'vue';
-// import fa from "element-plus/packages/locale/lang/fa";
+import {Store, useStore} from 'vuex'
+import {State} from "@vue/runtime-core";
+
 
 export default defineComponent({
   name: 'draggable',
@@ -76,6 +78,14 @@ export default defineComponent({
         fallbackOnBody:true,
         // 元素被选中
         onChoose: function (evt: any) {
+          if (that.group.put) {
+            let blackClassArr = document.getElementsByClassName('render-select-border');
+            for (let i = 0;i<blackClassArr.length;i++) {
+              blackClassArr[i].classList.remove('render-select-border')
+            }
+            evt.item.classList.add('render-select-border');
+            (blackClassArr as any)=null;
+          }
           that.$emit('onChoose',evt)
         },
         //拖动结束

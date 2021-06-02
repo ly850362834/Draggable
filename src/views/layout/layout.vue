@@ -5,7 +5,7 @@
           <elements></elements>
       </el-col>
       <el-col :span="12">
-        <renders class="layout-renders"></renders>
+          <renders class="layout-renders"></renders>
       </el-col>
       <el-col :span="6">
         <div>333</div>

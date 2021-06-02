@@ -19,7 +19,8 @@ export default defineComponent({
     return {
       group3: {name: "itxst.com", pull: true, put: true},
       group2: {name: "itxst.com", pull: true, put: true},
-      list: [{type: "basic", name: "input", label: "输入框"},{type: "basic", name: "input", label: "输入框"},{type: "basic", name: "input", label: "输入框"}]
+      // list: [{type: "basic", name: "input", label: "输入框"},{type: "basic", name: "input", label: "输入框"},{type: "basic", name: "input", label: "输入框"}],
+      list:[]
     }
   },
   components: {
@@ -27,17 +28,17 @@ export default defineComponent({
   },
   methods: {
     onChoose(evt: any){
-      console.log(evt)
+      // console.log(evt,666)
     },
     onEnd(): void {
       // console.log('拖动结束')
       // console.log('这是拖动结束')
     },
     onUpdate(evt: any){
-      console.log(evt)
+      // console.log(evt)
     },
     onAdd(evt: any) {
-      console.log(this.list,666)
+      // console.log(this.list,666)
       // console.log(this.list,666);
       // interface list {
       //   type: string

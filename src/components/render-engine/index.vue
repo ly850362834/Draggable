@@ -1,6 +1,8 @@
 <template>
-    <basicEngine :comInformation="comInformation" class="render-border" v-if="comInformation.type=='basic'"></basicEngine>
+  <div :comobj="JSON.stringify(comInformation)" class="render-border">
+    <basicEngine :comInformation="comInformation" v-if="comInformation.type=='basic'"></basicEngine>
     <layoutEngine :comInformation="comInformation" v-else-if="comInformation.type=='layout'"></layoutEngine>
+  </div>
 </template>
 <script lang="ts">
 
