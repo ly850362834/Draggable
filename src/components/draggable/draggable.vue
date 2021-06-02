@@ -10,12 +10,16 @@
 
 <script lang="ts">
 import Sortable from 'sortablejs';
-import {defineComponent, PropType} from 'vue';
-import {Store, useStore} from 'vuex'
-import {State} from "@vue/runtime-core";
-
+import {defineComponent, PropType,onBeforeUnmount} from 'vue';
+import eventBus from "@/assets/api/eventBus.ts";
 
 export default defineComponent({
+  // setup() {
+  //   function changeMenu(){
+  //     eventBus.$emit("change-menu");
+  //   }
+  //   return {changeMenu};
+  // },
   name: 'draggable',
   data(){
     return {
@@ -84,6 +88,7 @@ export default defineComponent({
               blackClassArr[i].classList.remove('render-select-border')
             }
             evt.item.classList.add('render-select-border');
+            (eventBus as any).$emit("change-menu");
             (blackClassArr as any)=null;
           }
           that.$emit('onChoose',evt)
@@ -191,9 +196,6 @@ export default defineComponent({
   },
   mounted(){
       this.registerDom();
-  },
-  setup() {
-    return {};
   },
 });
 

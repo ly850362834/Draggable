@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
-
+import eventBus from "@/assets/api/eventBus";
 export default defineComponent({
   name: 'render',
   props: {},
@@ -27,6 +27,11 @@ export default defineComponent({
 
   },
   methods: {
+    onEvent(){
+      (eventBus as any).$on("change-menu", () => {
+        console.log("这是eventBus")
+      });
+    },
     onChoose(evt: any){
       // console.log(evt,666)
     },
@@ -59,7 +64,7 @@ export default defineComponent({
     }
   },
   mounted() {
-
+    // this.onEvent();
   },
   setup() {
     return {};

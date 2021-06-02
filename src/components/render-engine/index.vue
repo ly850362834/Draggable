@@ -5,7 +5,6 @@
   </div>
 </template>
 <script lang="ts">
-
 export interface comInformation {
   type: string
   name: string
@@ -15,6 +14,9 @@ import basicEngine from './basics-engine/index.vue'
 import layoutEngine from './layout-engine/index.vue'
 import {defineComponent, PropType} from 'vue';
 export default defineComponent({
+  setup() {
+    return {}
+  },
   name: 'components',
   props: {
     comInformation:{
@@ -42,9 +44,6 @@ export default defineComponent({
   },
   mounted(){
 
-  },
-  setup() {
-    return {};
   },
 });
 </script>
