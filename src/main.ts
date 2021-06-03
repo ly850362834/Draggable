@@ -6,9 +6,7 @@ import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
 import '@/assets/less/main.less'
 import draggable from "@/components/draggable/draggable.vue";
-import renderEngine from '@/components/render-engine/index.vue'// const app=createApp(App).use(store).use(ElementPlus).use(router).mount('#app');
-// .use(store).use(ElementPlus).use(router).mount('#app')
-
+import renderEngine from '@/components/render-engine/index.vue';
 
 const app=createApp(App);
 app.use(ElementPlus);

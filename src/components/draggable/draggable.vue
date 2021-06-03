@@ -88,8 +88,8 @@ export default defineComponent({
               blackClassArr[i].classList.remove('render-select-border')
             }
             evt.item.classList.add('render-select-border');
-            (eventBus as any).$emit("change-menu");
             (blackClassArr as any)=null;
+            eventBus.$emit("change-menu");
           }
           that.$emit('onChoose',evt)
         },
