@@ -11,6 +11,7 @@
 <script lang="ts">
 // import Sortable from 'sortablejs';
 import {defineComponent, PropType,onBeforeUnmount} from 'vue';
+import { VueDraggableNext } from 'vue-draggable-next';
 // import eventBus from "@/assets/api/eventBus.ts";
 
 export default defineComponent({
@@ -26,6 +27,9 @@ export default defineComponent({
       views:true,
       renderId:`${new Date().valueOf()}`,
     }
+  },
+  components:{
+    VueDraggableNext
   },
   props: {
     // id: {
@@ -55,7 +59,7 @@ export default defineComponent({
 
   },
   mounted(){
-    this.registerDom();
+    // this.registerDom();
   },
 });
 

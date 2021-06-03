@@ -6,9 +6,11 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare module 'vue-draggable-next'
+
 declare module 'sortablejs'
 // vuex.d.ts
-import { ComponentCustomProperties } from '@/vue'
 import { Store } from 'vuex'
 
 declare module '@vue/runtime-core' {

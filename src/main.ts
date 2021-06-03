@@ -5,7 +5,7 @@ import store from './store'
 import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
 import '@/assets/less/main.less'
-import draggable from "@/components/draggable/draggable.vue";
+import draggable from "@/components/draggable-next/draggable.vue";
 import renderEngine from '@/components/render-engine/index.vue';
 
 const app=createApp(App);
