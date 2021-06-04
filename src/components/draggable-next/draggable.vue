@@ -1,65 +1,57 @@
 <template>
-  <div :id="renderId">
-    <template v-if="views">
-      <slot name="content">
+  <VueDraggableNext :list="list" :group="group" @change="onChange">
+    <slot name="content" v-if="isFather">
 
-      </slot>
+    </slot>
+    <template v-if="!isFather">
+      <renderEngine v-for="(item,index) in list" :comInformation="item" :key="index" :group="group">
+      </renderEngine>
     </template>
-  </div>
+  </VueDraggableNext>
 </template>
 
 <script lang="ts">
-// import Sortable from 'sortablejs';
 import {defineComponent, PropType,onBeforeUnmount} from 'vue';
 import { VueDraggableNext } from 'vue-draggable-next';
 // import eventBus from "@/assets/api/eventBus.ts";
 
 export default defineComponent({
-  // setup() {
-  //   function changeMenu(){
-  //     eventBus.$emit("change-menu");
-  //   }
-  //   return {changeMenu};
-  // },
   name: 'draggable',
   data(){
     return {
-      views:true,
-      renderId:`${new Date().valueOf()}`,
+
     }
   },
   components:{
     VueDraggableNext
   },
   props: {
-    // id: {
-    //   type: String,
-    //   required: true
-    // },
-    // list: {
-    //   type: Array,
-    //   default: () => ([])
-    // },
-    // sortableObj: {
-    //   type: Object,
-    //   required: false
-    // },
-    // group: {
-    //   type: Object,
-    //   required: false,
-    //   default: () => ({
-    //     name: "itxst.com", pull: 'clone', put: false
-    //   })
-    // }
+    list: {
+      type: Array,
+      default: () => ([])
+    },
+    isFather: {
+      type: Boolean,
+      default:false
+    },
+    group: {
+      type: Object,
+      required: false,
+      default: () => ({
+        name: 'people', pull: true , put: true
+      })
+    }
   },
   created() {
 
   },
   methods: {
-
+    onChange(evt: any){
+      this.$emit('onChang',evt)
+    }
   },
   mounted(){
-    // this.registerDom();
+
   },
 });
 

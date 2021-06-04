@@ -1,70 +1,35 @@
 <template>
-  <draggable :onEnd="onEnd" :group="group2" @onAdd="onAdd" @onUpdate="onUpdate" @onChoose="onChoose"
-             :list="list">
-    <template v-slot:content>
-      <template v-for="(item,index) in list">
-        <renderEngine :comInformation="item" class="draggable" id="lll"></renderEngine>
-      </template>
-    </template>
-  </draggable>
+<draggable :list="list" :onChange="onChange">
+
+</draggable>
 </template>
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
+// import { VueDraggableNext } from 'vue-draggable-next';
 import eventBus from "@/assets/api/eventBus";
 export default defineComponent({
   name: 'render',
   props: {},
   data() {
     return {
-      group3: {name: "itxst.com", pull: true, put: true},
-      group2: {name: "itxst.com", pull: true, put: true},
-      // list: [{type: "basic", name: "input", label: "输入框"},{type: "basic", name: "input", label: "输入框"},{type: "basic", name: "input", label: "输入框"}],
-      list:[]
+      list:[] as Array<Object>
     }
   },
   components: {
 
   },
   methods: {
-    onEvent(){
-
-    },
-    onChoose(evt: any){
-      // console.log(evt,666)
-    },
-    onEnd(): void {
-      // console.log('拖动结束')
-      // console.log('这是拖动结束')
-    },
-    onUpdate(evt: any){
-      // console.log(evt)
-    },
-    onAdd(evt: any) {
-      // console.log(this.list,666)
-      // console.log(this.list,666);
-      // interface list {
-      //   type: string
-      //   name: string
-      // }
-      // console.log((this.list[0] as list).name);
-      // debugger
-      // console.log((this.list));
-      // debugger
-      // debugger
-      // setTimeout(()=>{
-      //   console.log((this.list[0] as any).type);
-      //   debugger
-      // },0)
-       // console.log(this.list,666);
-       // console.log(this.list[0])
-     //  debugger
+    onChange(evt: any) {
+      console.log(this.list)
     }
   },
   mounted() {
-    eventBus.$on("change-menu", () => {
-      console.log("这是eventBus")
-    });
+    // eventBus.$on("change-menu", (key: any) => {
+    //   console.log("这是eventBus的Key",this.group2,key);
+    //   //接下来遍历查询就好 查出节点 赋值右侧操作侧;
+    //
+    // });
     // this.onEvent();
   },
   setup() {

@@ -3,9 +3,9 @@
     <div class="element">
       <h5>{{ basicsComponent.label }}</h5>
       <ul>
-        <draggable :onEnd="onEnd" :onChoose="onChoose">
-          <template  v-slot:content>
-            <li class="draggable" v-for="(item,index) in basicsComponent.basicsComponentJson" :comObj="JSON.stringify(item)">
+        <draggable :list="basicsComponent.basicsComponentJson" :group="{ name: 'people', pull: 'clone', put: false }" isFather>
+          <template v-slot:content>
+            <li v-for="(item,index) in basicsComponent.basicsComponentJson">
               {{item.label}}
             </li>
           </template>
@@ -15,9 +15,9 @@
     <div class="element">
       <h5>{{ layoutComponent.label }}</h5>
       <ul>
-        <draggable :onEnd="onEnd" :onChoose="onChoose">
-          <template  v-slot:content>
-            <li class="draggable" v-for="(item,index) in layoutComponent.layoutComponentJson" :comObj="JSON.stringify(item)">
+        <draggable :list="layoutComponent.layoutComponentJson" :group="{ name: 'people', pull: 'clone', put: false }" isFather>
+          <template v-slot:content>
+            <li v-for="(item,index) in layoutComponent.layoutComponentJson">
               {{item.label}}
             </li>
           </template>
@@ -28,6 +28,7 @@
   </div>
 </template>
 <script lang="ts">
+import { VueDraggableNext } from 'vue-draggable-next';
 import {basicComponent} from "@/json/components/basics-components";
 import {layoutComponent} from "@/json/components/layout-components";
 import {defineComponent, PropType} from 'vue';
@@ -41,23 +42,20 @@ export default defineComponent({
   },
   data(){
     return {
+      // list: [
+      //   { name: 'John', id: 1 },
+      //   { name: 'Joao', id: 2 },
+      //   { name: 'Jean', id: 3 },
+      //   { name: 'Gerard', id: 4 },
+      // ],
       basicsComponent: {},
-      layoutComponent:{}
+      layoutComponent:{},
     }
   },
   components:{
-
+    VueDraggableNext
   },
   methods: {
-    onChoose(evt: any) {
-      // console.log(evt)
-    },
-    onEnd(evt: any){
-      // console.log('这是拖动结束',evt)
-    },
-    onAdd(evt:any){
-      // console.log(type)
-    },
 
   },
   created() {
