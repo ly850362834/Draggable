@@ -1,10 +1,10 @@
 <template>
-  <VueDraggableNext :list="list" :group="group" @change="onChange">
+  <VueDraggableNext :list="list" :group="group" @change="onChange" chosenClass="render-chosen-border"  @choose='onChoose'>
     <slot name="content" v-if="isFather">
 
     </slot>
     <template v-if="!isFather">
-      <renderEngine v-for="(item,index) in list" :comInformation="item" :key="index" :group="group">
+      <renderEngine v-for="(item,index) in list" :comInformation="item" :key="index" :group="group" @click.stop="onClick(item)">
       </renderEngine>
     </template>
   </VueDraggableNext>
@@ -46,6 +46,14 @@ export default defineComponent({
 
   },
   methods: {
+    //点击选择时间
+    onClick(item: object){
+      // console.log(999)
+      this.$emit('onChoose',item)
+    },
+    onChoose(dom:any){
+
+    },
     onChange(evt: any){
       this.$emit('onChang',evt)
     }
