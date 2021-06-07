@@ -4,7 +4,7 @@
 
     </slot>
     <template v-if="!isFather">
-      <renderEngine v-for="(item,index) in list" :comInformation="item" :key="index" :group="group" @click.stop="onClick(item)">
+      <renderEngine v-for="(item,index) in list" :comInformation="item" :key="index" @click.stop="onClick(item)">
       </renderEngine>
     </template>
   </VueDraggableNext>

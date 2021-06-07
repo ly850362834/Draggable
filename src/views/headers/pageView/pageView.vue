@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <headers></headers>
-    <layout></layout>
-  </div>
+    <views v-for="(item,index) in list" :comInformation="item" :key="index"></views>
 </template>
 <script lang="ts">
-import layout from "@/views/layout/layout.vue";
-import headers from "@/views/headers/headers.vue";
+import views from '@/components/render-engine/views.vue'
 import {defineComponent, PropType} from 'vue';
+interface state{
+  list?:Array<Object>,
+}
 export default defineComponent({
   name: 'components',
   props: {
@@ -15,13 +14,11 @@ export default defineComponent({
   },
   data(){
     return {
-      drawer:false,
-      direction:'rtl'
+      list:(this.$store.state as state).list,
     }
   },
   components:{
-    layout,
-    headers
+    views
   },
   methods: {
 

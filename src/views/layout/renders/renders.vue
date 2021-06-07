@@ -8,12 +8,15 @@ import eventBus from "@/assets/api/eventBus";
 interface itemP{
   isSelect: boolean
 }
+interface state{
+  list?:Array<Object>,
+}
 export default defineComponent({
   name: 'render',
   props: {},
   data() {
     return {
-      list:[] as Array<Object>,
+      list:(this.$store.state as state).list,
       isSelectedArray:[] as Array<Object>
     }
   },
