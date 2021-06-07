@@ -1,5 +1,5 @@
 <template>
-  <VueDraggableNext :list="list" :group="group" @change="onChange" chosenClass="render-chosen-border"  @choose='onChoose'>
+  <VueDraggableNext :list="list" :group="group" @add="onAdd" @change="onChange" chosenClass="render-chosen-border" @end="end">
     <slot name="content" v-if="isFather">
 
     </slot>
@@ -13,7 +13,7 @@
 <script lang="ts">
 import {defineComponent, PropType,onBeforeUnmount} from 'vue';
 import { VueDraggableNext } from 'vue-draggable-next';
-// import eventBus from "@/assets/api/eventBus.ts";
+import eventBus from "@/assets/api/eventBus.ts";
 
 export default defineComponent({
   name: 'draggable',
@@ -46,13 +46,19 @@ export default defineComponent({
 
   },
   methods: {
-    //点击选择时间
+    end(){
+      this.$emit('onEnd')
+    },
+    onAdd(item: object,evt: any){
+      // console.log(item,666,evt)
+      this.$emit('onAdd')
+    },
+    //点击选择组件
     onClick(item: object){
-      // console.log(999)
-      this.$emit('onChoose',item)
+      eventBus.$emit('onChoose',item);
     },
     onChoose(dom:any){
-
+        // console.log(dom)
     },
     onChange(evt: any){
       this.$emit('onChang',evt)

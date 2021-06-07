@@ -1,6 +1,6 @@
 <template>
-    <basicEngine :comInformation="comInformation" v-if="comInformation.type=='basic'"></basicEngine>
-    <layoutEngine :comInformation="comInformation" v-else-if="comInformation.type=='layout'"></layoutEngine>
+    <basicEngine :comInformation="comInformation" v-if="comInformation.type=='basic'" :class="{'render-select-border':comInformation.isSelect?true:false}"></basicEngine>
+    <layoutEngine :comInformation="comInformation" v-else-if="comInformation.type=='layout'" ></layoutEngine>
 </template>
 <script lang="ts">
 export interface comInformation {

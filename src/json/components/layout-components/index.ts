@@ -1,13 +1,13 @@
 import {Layout} from './layout';
 import {row} from './row/row';
 class LayoutComponent extends Layout {
-    readonly layoutComponentJson: Array<object> = [];
+    readonly componentJson: Array<object> = [];
     constructor(name: string,label: string) {
         super(name,label)
     }
 }
 const layoutComponent = new LayoutComponent('布局组件','布局组件');
-layoutComponent.layoutComponentJson.push(row);
+layoutComponent.componentJson.push(row);
 export {
     layoutComponent
 }
