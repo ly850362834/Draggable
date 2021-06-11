@@ -8,6 +8,7 @@
 import layout from "@/views/layout/layout.vue";
 import headers from "@/views/headers/headers.vue";
 import {defineComponent, PropType} from 'vue';
+
 export default defineComponent({
   name: 'components',
   props: {
@@ -27,7 +28,8 @@ export default defineComponent({
 
   },
   mounted(){
-
+    // var json: Array<object> = [{type:'basic'},{type:'layout',children:[{type:'basic',list:[{type:'basic'}]},{type:'basic',list:[{type:'basic'}]}]}]
+    // console.log(createCode(json))
   },
   setup() {
     return {};

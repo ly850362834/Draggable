@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header-action">
-      <el-button type="primary" size="mini">生成Vue代码</el-button>
+      <el-button type="primary" size="mini" @click="createdVueCode">生成Vue代码</el-button>
       <el-button type="primary" size="mini">预览代码</el-button>
       <el-button type="primary" size="mini" @click="seePage">预览页面</el-button>
     </div>
@@ -18,6 +18,11 @@
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
 import pageView from "./pageView/pageView.vue"
+import {createCode} from "@/assets/code-engine";
+interface state{
+  mode?:'view'|'render',
+  list?:Array<Object>,
+}
 export default defineComponent({
   name: 'components',
   props: {
@@ -33,6 +38,9 @@ export default defineComponent({
     pageView
   },
   methods: {
+    createdVueCode(){
+      console.log(createCode((this.$store.state as state).list));
+    },
     seePage(){
       interface state{
         mode?:'view'|'render',
