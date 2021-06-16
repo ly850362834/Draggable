@@ -8,7 +8,7 @@
           <renders class="layout-renders"></renders>
       </el-col>
       <el-col :span="6">
-        <div>333</div>
+          <options></options>
       </el-col>
     </el-row>
   </div>
@@ -17,7 +17,12 @@
 <script lang="ts">
 import elements from "@/views/layout/elements/elements.vue";
 import renders from "@/views/layout/renders/renders.vue";
+import options from "@/views/layout/options/options.vue";
 import {defineComponent, PropType} from 'vue';
+import eventBus from "@/assets/api/eventBus";
+interface itemP{
+  isSelect: boolean
+}
 export default defineComponent({
   name: 'components',
   props: {
@@ -25,12 +30,14 @@ export default defineComponent({
   },
   data(){
     return {
-      group2 : {name: "itxst.com", pull: 'clone', put: true}
+      group2 : {name: "itxst.com", pull: 'clone', put: true},
+      isSelectedArray:[] as Array<Object>
     }
   },
   components:{
     elements,
-    renders
+    renders,
+    options
   },
   methods: {
     onEnd(){
@@ -38,7 +45,7 @@ export default defineComponent({
     },
     onAdd(evt:any,type:any){
       // console.log(type)
-    }
+    },
   },
   mounted(){
 

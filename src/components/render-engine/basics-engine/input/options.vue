@@ -1,14 +1,10 @@
 <template>
-    <views v-for="(item,index) in list" :comInformation="item" :key="index">
-
-    </views>
+  <div>
+    这是input操作面板
+  </div>
 </template>
 <script lang="ts">
-import views from '@/components/render-engine/views.vue'
 import {defineComponent, PropType} from 'vue';
-interface state{
-  list?:Array<Object>,
-}
 export default defineComponent({
   name: 'components',
   props: {
@@ -16,11 +12,11 @@ export default defineComponent({
   },
   data(){
     return {
-      list:(this.$store.state as state).list,
+
     }
   },
   components:{
-    views
+
   },
   methods: {
 
