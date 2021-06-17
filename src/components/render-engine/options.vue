@@ -1,7 +1,7 @@
 <template>
   <div>
-    <bascicOptions v-if="isSelectedItem.type=='basic'"></bascicOptions>
-    <layoutOptions v-if="isSelectedItem.type=='layout'"></layoutOptions>
+    <bascicOptions v-if="isSelectedArray[0].type=='basic'"></bascicOptions>
+    <layoutOptions v-if="isSelectedArray[0].type=='layout'"></layoutOptions>
   </div>
 </template>
 <script lang="ts">
@@ -10,7 +10,8 @@ import bascicOptions from './basics-engine/options.vue'
 import layoutOptions from './layout-engine/options.vue'
 export default defineComponent({
   name: 'components',
-  props:['isSelectedItem'],
+  props:[],
+  inject: ['isSelectedArray'],
   data(){
     return {
 

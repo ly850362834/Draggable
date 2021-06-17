@@ -1,5 +1,5 @@
 <template>
-  <elInput></elInput>
+  <elInput v-model="comInformation.value"></elInput>
 </template>
 <script lang="ts">
 import elInput from './input/input.vue';

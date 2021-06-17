@@ -1,5 +1,6 @@
 import {Layout} from '../layout'
 class Row extends Layout{
+    rowLength: number = 2;
     constructor(name: string,label: string) {
         super(name,label);
         this.children.push({name:'col',label:'栅格',list:[],type:'basic'})

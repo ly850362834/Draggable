@@ -8,9 +8,7 @@ import inputOpitons from './input/options.vue'
 import {defineComponent, PropType} from 'vue';
 export default defineComponent({
   name: 'components',
-  props: {
-
-  },
+  inject: ['isSelectedArray'],
   data(){
     return {
 

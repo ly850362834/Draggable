@@ -8,9 +8,7 @@ import {defineComponent, PropType} from 'vue';
 import rowOptions from './row/options.vue'
 export default defineComponent({
   name: 'components',
-  props: {
-
-  },
+  inject: ['isSelectedArray'],
   data(){
     return {
 

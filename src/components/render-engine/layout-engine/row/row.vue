@@ -1,10 +1,7 @@
 <template>
   <el-row>
-    <el-col :span="12">
-      <draggable :list="comInformation.children[0].list" class="render-col-border"></draggable>
-    </el-col>
-    <el-col :span="12">
-      <draggable :list="comInformation.children[1].list" class="render-col-border"></draggable>
+    <el-col :span="24/comInformation.children.length" v-for="item in comInformation.children">
+      <draggable :list="item.list" class="render-col-border"></draggable>
     </el-col>
   </el-row>
 </template>

@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header-action">
       <el-button type="primary" size="mini" @click="createdVueCode">生成Vue代码</el-button>
-      <el-button type="primary" size="mini">预览代码</el-button>
+      <el-button type="primary" size="mini" @click=seeCode>预览代码</el-button>
       <el-button type="primary" size="mini" @click="seePage">预览页面</el-button>
     </div>
   </header>
@@ -40,6 +40,9 @@ export default defineComponent({
   methods: {
     createdVueCode(){
       console.log(createCode((this.$store.state as state).list));
+    },
+    seeCode(){
+
     },
     seePage(){
       interface state{
